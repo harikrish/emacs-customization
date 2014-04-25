@@ -26,9 +26,9 @@
 (package-initialize)
 
 (setq url-proxy-services '(("no_proxy" . "work\\.com")
-                           ("http" . "proxy.wellsfargo.com:8080")))
+                           ("http" . "proxy.acme.com:8080")))
 
-(setq find-program "C:/Users/u247918/Downloads/UnxUtils/usr/local/wbin/find.exe")
+(setq find-program "C:/Users/anandan/Downloads/UnxUtils/usr/local/wbin/find.exe")
 
 
 
