@@ -43,3 +43,8 @@
 (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
 
 (setq-default indent-tabs-mode nil)
+
+(require 'flymake-csslint)
+
+(setq show-paren-delay 0)
+(show-paren-mode 1)
