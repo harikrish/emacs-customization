@@ -1,0 +1,27 @@
+Key Bindings
+------------
+C-n        - next line
+C-p        - previous line
+C-f        - next character
+C-b        - previous character
+C-/        - Undo
+C-M-<      - Top of page
+C-M->      - End of page
+C-x-s      - Save file
+C-x-f      - Find file
+M-x        - run a command
+C-x-b      - Switch buffer
+C-e        - go to end of line
+C-a        - go to start of line
+C-s        - search
+C-r        - reverse search
+C-M-n      - match parentheses next
+C-M-p      - match parentheses previous
+
+
+Commands
+--------
+dired      - command to launch directory listing 
+rgrep      - Find files
+shell      - start shell
+wdired-change-to-wdired-mode     - make dired editabled
