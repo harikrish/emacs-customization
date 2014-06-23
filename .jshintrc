@@ -1,0 +1,29 @@
+{
+
+    "undef": true, // not declared vars
+    "strict": true, // strict mode on
+    "curly": true, // force to use curly brackets on if/for/while etc.
+    "eqeqeq": true, // do not use == use ===
+    "forin": true, // force to hasOwnProperty check in iterated object
+    "latedef": "nofunc", // do not use variabled before it is declared with function declarations ignored
+
+
+    "unused": "vars", // unused, explicitly declared, vars, skips function attributes
+    "trailing": true, // no trailing whitespaces
+    "onevar": true, // one variable declaration per function
+    "camelcase": true, // camelCase varialbes names
+    "quotmark": "single", // use ' '
+    "indent": 4, // indentation with 4 spaces
+    "noempty": true, // no empty blocks allowed
+
+
+    "browser": true,
+    "newcap": true, // constructors used with new has to be capitalized
+    "maxlen": 120,
+
+    "globals": {
+        "jQuery": true,
+        "$": true,
+        "YUI": true
+    }
+}

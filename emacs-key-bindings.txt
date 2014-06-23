@@ -17,11 +17,34 @@ C-s        - search
 C-r        - reverse search
 C-M-n      - match parentheses next
 C-M-p      - match parentheses previous
-
+C-l        - center content on viewport
+C-v        - show next page of content
+M-v        - show previous page of content
+C-x-o      - switch to other buffer
+C-x-1      - expand current buffer
+vc-diff    - show diff of file using appropriate version control
+C-k        - cut line
+C-space    - Set mark
+C-w        - Cut region
+M-w        - Copy region
+M-g-g      - Goto line
+C-u M-x shell - New shell
+C-x C-u   - upcase-region
+C-x C-w   - Save file as
 
 Commands
 --------
-dired      - command to launch directory listing 
-rgrep      - Find files
-shell      - start shell
-wdired-change-to-wdired-mode     - make dired editabled
+dired           - command to launch directory listing 
+rgrep           - Find files
+shell           - start shell
+wdired-change-to-wdired-mode     - make dired editable
+hackernews      - Load Hackernews
+eval-buffer     - evaluate buffer
+find-name-dired - Finds files matching pattern recursively
+ibuffer         - another buffer for listing buffers
+query-replace   - Search and replace string in buffer
+
+Help Sites
+----------
+Remove ^M                         - http://aruljohn.com/info/ctrlm/
+Search and replace multiple files - http://ergoemacs.org/emacs/find_replace_inter.html

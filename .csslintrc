@@ -1,0 +1,10 @@
+{
+    "ids": false,
+    "important": false,
+    "floats": false,
+    "box-sizing": false,
+    "text-indent": false,
+    "overqualified-elements": false,
+    "qualified-headings": false,
+    "unique-headings": false
+}
