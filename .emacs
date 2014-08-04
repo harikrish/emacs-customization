@@ -71,3 +71,48 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1) 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(show-paren-mode t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+(set-face-attribute 'default nil :height 180)
+
+
+(require 'recentf)
+ 
+;; get rid of `find-file-read-only' and replace it with something
+;; more useful.
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+ 
+;; enable recent files mode.
+(recentf-mode t)
+ 
+; 50 files ought to be enough.
+(setq recentf-max-saved-items 50)
+ 
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+(require 'calendar)
+
+(defun insdate-insert-current-date (&optional omit-day-of-week-p)
+    "Insert today's date using the current locale.
+  With a prefix argument, the date is inserted without the day of
+  the week."
+    (interactive "P*")
+    (insert (calendar-date-string (calendar-current-date) nil
+				  omit-day-of-week-p)))
