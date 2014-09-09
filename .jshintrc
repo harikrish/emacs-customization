@@ -24,6 +24,7 @@
     "globals": {
         "jQuery": true,
         "$": true,
-        "YUI": true
+        "YUI": true,
+        "define": true
     }
 }
