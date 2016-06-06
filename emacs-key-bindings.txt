@@ -31,6 +31,15 @@ M-g-g      - Goto line
 C-u M-x shell - New shell
 C-x C-u   - upcase-region
 C-x C-w   - Save file as
+C-=       - Expand Region
+C-x-g     - Magit status
+C->       - Mark next like this
+C-<       - Mark previous like this
+C-c C-<   - Mark all like this
+C-S-up    - Move buffer up
+C-S-down  - Move buffer down
+C-S-left  - Move buffer left
+C-S-right - Move buffer right
 
 Commands
 --------
@@ -43,6 +52,23 @@ eval-buffer     - evaluate buffer
 find-name-dired - Finds files matching pattern recursively
 ibuffer         - another buffer for listing buffers
 query-replace   - Search and replace string in buffer
+
+Packages
+--------
+Projectile      - https://github.com/bbatsov/projectile
+windmove        - https://www.emacswiki.org/emacs/WindMove
+web-mode        - http://web-mode.org/
+smex            - https://github.com/nonsequitur/smex
+company         - http://company-mode.github.io/
+flycheck        - http://www.flycheck.org/en/latest/
+editorconfig    - https://github.com/editorconfig/editorconfig-emacs
+multiterm       - https://www.emacswiki.org/emacs/MultiTerm
+indentguide     - https://github.com/zk-phi/indent-guide
+recent files    - https://www.emacswiki.org/emacs/RecentFiles
+magit           - https://github.com/magit/magit
+show-paren      - https://www.emacswiki.org/emacs/ShowParenMode
+muliple-cursors - https://github.com/magnars/multiple-cursors.el
+buffer-move     - https://www.emacswiki.org/emacs/buffer-move.el
 
 Help Sites
 ----------

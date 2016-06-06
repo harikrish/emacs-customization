@@ -1,0 +1,196 @@
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
+(require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+;;(ido-everywhere 1)
+
+;;(projectile-global-mode)
+(add-hook 'web-mode-hook 'projectile-mode)
+
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
+;;(require 'smartparens-config)
+
+;; Always start smartparens mode in js-mode.
+(add-hook 'web-mode-hook #'smartparens-mode)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+(set-face-attribute 'default nil :height 150)
+
+(set-default-font "Courier")
+
+;; turn on flychecking globally
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
+(global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+	  '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+
+;; disable json-jsonlist checking for json files
+;;(setq-default flycheck-disabled-checkers
+;;  (append flycheck-disabled-checkers
+;;    '(json-jsonlist)))
+
+;; https://github.com/purcell/exec-path-from-shell
+;; only need exec-path-from-shell on OSX
+;; this hopefully sets up path and other vars better
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+
+(editorconfig-mode 1)
+
+;;; .emacs ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-dabbrev-downcase nil)
+ '(indent-tabs-mode nil)
+ '(tab-width 4)
+ '(term-bind-key-alist
+   (quote
+    (("C-c C-c" . term-interrupt-subjob)
+     ("C-c C-e" . term-send-esc)
+     ("C-p" . previous-line)
+     ("C-n" . next-line)
+     ("C-s" . isearch-forward)
+     ("C-m" . term-send-return)
+     ("C-y" . term-paste)
+     ("M-f" . term-send-forward-word)
+     ("M-b" . term-send-backward-word)
+     ("M-o" . term-send-backspace)
+     ("M-p" . term-send-up)
+     ("M-n" . term-send-down)
+     ("M-M" . term-send-forward-kill-word)
+     ("M-N" . term-send-backward-kill-word)
+     ("<C-backspace>" . term-send-backward-kill-word)
+     ("M-r" . term-send-reverse-search-history)
+     ("M-," . term-send-raw)
+     ("M-." . comint-dynamic-complete))))
+ '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-y" "<ESC>"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(add-to-list 'load-path "~/.emacs.d/multi-term/")
+
+(require 'multi-term)
+
+(setq multi-term-program "/bin/bash")
+
+(editorconfig-mode 1)
+
+(indent-guide-global-mode)
+
+;;(setq tab-stop-list (number-sequence 4 120 4))
+;;(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
+;;                          64 68 72 76 80 84 88 92 96 100 104 108 112
+;;                          116 120))
+
+;;(vimish-fold-global-mode 1)
+
+;; (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+
+;; (autoload 'hideshowvis-minor-mode
+;;    "hideshowvis"
+;;    "Will indicate regions foldable with hideshow in the fringe."
+;;    'interactive)
+
+
+;; (dolist (hook (list 'emacs-lisp-mode-hook
+;;                      'c++-mode-hook))
+;;   (add-hook hook 'hideshowvis-enable))
+
+;;  (hideshowvis-symbols)
+
+
+(require 'recentf)
+
+;; get rid of `find-file-read-only' and replace it with something
+;; more useful.
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+
+;; enable recent files mode.
+(recentf-mode t)
+
+; 50 files ought to be enough.
+(setq recentf-max-saved-items 50)
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+
+;;setup content type to jsx for webmode for js files
+(setq web-mode-content-types-alist
+  '(("jsx" . "\\.js[x]?\\'")))
+
+;;setup move or copy line or selections
+(global-move-dup-mode)
+
+;;show matching parantheses and other characters
+(show-paren-mode 1)
+
+
+(setq ido-use-filename-at-point 'guess)
+
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;;(yas-global-mode 1)
+
+
+(dumb-jump-mode)
+(setq dumb-jump-default-project "~/GitProjects/sdp/sdp-static/src/static/")
+
+(eval-after-load 'company
+    '(add-to-list 'company-backends 'company-tern))
+
+
+(add-hook 'web-mode-hook (lambda () (tern-mode t)))
+
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+(global-set-key (kbd "C-x g") 'magit-status)
